@@ -136,7 +136,9 @@ Msg2: cat flag-2.txt #...
 we can see that if we pick the layout with no leading whitespace and one space before the `#`,
 then the length up to and including the `#` is a small multiple of 4 bytes (16 bytes) and
 byte 9 of the second message (`0x32`) is indeed one greater than in the first message (`0x31`).
-These are exactly the conditions which unicoll requires. So we can go ahead with using
+These are exactly the conditions which unicoll requires,
+which means the chosen-prefix attack has just been converted into an identical-prefix attack,
+which will save a lot of time. So we can go ahead with using
 the `poc_no.sh` script from the hashclash software with an empty prefix and
 a controlled first 16 bytes of the suffix `cat flag-1.txt #` (the first message will inherit this
 template and the second message will have byte 9 incremented into `cat flag-2.txt #`).
