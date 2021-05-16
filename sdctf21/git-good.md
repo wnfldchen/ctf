@@ -121,8 +121,9 @@ $ curl https://cgau.sdc.tf/.git/objects/84/f191442c8479c4cbd67937b9cbe3df2038be6
 binary data in [git blob format](https://www.dulwich.io/docs/tutorial/file-format.html#the-blob),
 which is just a brief null-terminated blob header followed by the file content. In this case:
 
-```
-blob 8192^@SQLite format 3
+```bash
+$ curl https://cgau.sdc.tf/.git/objects/84/f191442c8479c4cbd67937b9cbe3df2038be63 | zlib-flate -uncompress | head -c 25
+blob 8192SQLite format 3
 ```
 
 the file is a SQLite database, and stripping out the header results in the original `users.db` file.
